@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html;
+					       charset=UTF-8">
+      <title>Welcome Database 751</title>
+      <link rel="stylesheet" type="text/css" href="/styles.css">
+  </head>
+  <body>
+
+    <h1>Database 751 Visitors</h1>
+
+    <!-- This form submits a name to be remembered to the URL --
+      -- /remember-me using the POST http method --> 
+    <form action="/remember-me" method="POST">  
+      <label for="GET-name">Name:</label>
+      <input id="GET-name" type="text" name="name" autofocus>
+      <input type="submit" value="Save">
+    </form>
+    <ul>
+      
+    <!-- This form provides a button that basically just refreshes the
+    page using the GET method (same as a browser) --> 
+    <form action="/" method="GET">  
+      <input type="submit" value="Refresh">
+    </form>
+    <ul>
+
+      <% data.each do |name, count| %>
+      <li><%= name %> visited <%= count %> times!</li>
+      <% end %>
+    </ul>
+
+    <p>
+      <a href="/">Refresh</a>
+    </p>
+    
+  </body>
+</html>
