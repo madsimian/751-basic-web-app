@@ -24,15 +24,18 @@
     <form action="/" method="GET">  
       <input type="submit" value="Refresh">
     </form>
-    <ul>
 
-      <% data.each do |name, count| %>
-      <li><%= name %> visited <%= count %> times!</li>
-      <% end %>
-    </ul>
+    <div class="visitor_list">
+      <ul>
+
+	<% data.each do |name, count| %>
+	<li><%= name %> visited <%= count %> times!</li>
+	<% end %>
+      </ul>
+    </div>
 
     <p>
-      <a href="/">Refresh</a>
+    <a href="/">Refresh</a>
     </p>
     
   </body>
