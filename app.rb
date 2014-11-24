@@ -1,5 +1,4 @@
 require 'rack'
-require 'puma'
 require 'erubis'
 
 class IPRecorder
@@ -40,13 +39,14 @@ class Handler
       response = ['200', {"Content-Type" => 'text/html'}, ["Hello yourself."]]
     when '/remember-me'
       name = req.params["name"]
-      if name.downcase == "jonathan"
-        response = ['200', {'Content-Type' => 'text/html'}, [render("jonathan.erb", {data: env})]]
+      @model.record(name, req.ip)
+      if name && name.downcase == "jonathan"
+        response = ['302', {'Content-Type' => 'text','Location' => '/jonathan'}, ['302 found'] ]
       else
-        @model.record(name, req.ip)
-        # 302 Found: Redirect
         response = ['302', {'Content-Type' => 'text','Location' => '/'}, ['302 found'] ]
       end
+    when '/jonathan'
+        response = ['200', {'Content-Type' => 'text/html'}, [render("jonathan.erb", {data: env})]]
     when '/favicon.ico'
       # 403: Forbidden esponse code forces browsers to stop requesting favicons
       response = ['403', {}, ["Not going to happen."]]
