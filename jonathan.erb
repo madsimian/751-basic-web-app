@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html;
+					       charset=UTF-8">
+      <title>Jonathan's Secret Web Page</title>
+      <link rel="stylesheet" type="text/css" href="/styles.css">
+  </head>
+  <body>
+
+    <h1>Jonathan's Secret Web Page</h1>
+
+    <p>You have discovered my secret page. Congratulations!</p>
+
+    <h4>Environment Variables</h4>
+    
+    <ul>
+    <% if data %>
+      <% data.each do |variable, value| %>
+        <li><strong><%= variable %></strong>: <%= value %></li>
+      <% end %>
+    <% end %>
+    </ul>
+
+
+    <p>
+        <a href="/">Go home!</a>
+    </p>
+
+  </body>
+</html>

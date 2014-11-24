@@ -41,7 +41,7 @@ class Handler
     when '/remember-me'
       name = req.params["name"]
       if name.downcase == "jonathan"
-        response = ['401', {'Content-Type' => 'text/html'}, ["<h1>Jonathan is not welcome here!!</h1>"]]
+        response = ['200', {'Content-Type' => 'text/html'}, [render("jonathan.erb", {data: env})]]
       else
         @model.record(name, req.ip)
         # 302 Found: Redirect
