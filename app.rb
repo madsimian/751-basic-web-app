@@ -1,15 +1,15 @@
 require 'rack'
 require 'erubis'
 
-class Counter
+class IPRecorder
   
   def initialize
-    @data = Hash.new {|hash,value| hash[value] = 0 }
+    @data = Hash.new
   end
 
-  def count(name)
+  def record(name, ip)
     if name
-      @data[name] += 1
+      @data[name] = ip
     end
   end
 
@@ -22,7 +22,7 @@ end
 class Handler
 
   def initialize
-    @model = Counter.new
+    @model = IPRecorder.new
   end
 
   def call(env)
@@ -36,7 +36,7 @@ class Handler
     # 'remember-me' accepts form data
     when '/remember-me'
       name = req.params["name"]
-      @model.count(name)
+      @model.record(name, req.ip)
       # 302 Found: Redirect
       response = ['302', {'Content-Type' => 'text','Location' => '/'}, ['302 found'] ]
     when '/favicon.ico'
