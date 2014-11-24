@@ -34,6 +34,9 @@ class Handler
       # 200 OK normal response
       response = ['200', {"Content-Type" => 'text/html'}, [render("index.erb", {data: @model.to_a})]]
     # 'remember-me' accepts form data
+    when '/hello'
+      # 200 OK normal response
+      response = ['200', {"Content-Type" => 'text/html'}, ["Hello yourself."]]
     when '/remember-me'
       name = req.params["name"]
       @model.record(name, req.ip)
