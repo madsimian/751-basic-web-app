@@ -19,17 +19,11 @@
     </form>
     <ul>
       
-    <!-- This form provides a button that basically just refreshes the
-    page using the GET method (same as a browser) --> 
-    <form action="/" method="GET">  
-      <input type="submit" value="Refresh">
-    </form>
-
     <div class="visitor_list">
       <ul>
 
 	<% data.each do |name, count| %>
-	<li><%= name %> visited from this IP <%= count %></li>
+	<li><%= name %> visited from this IP: <%= count %></li>
 	<% end %>
       </ul>
     </div>
